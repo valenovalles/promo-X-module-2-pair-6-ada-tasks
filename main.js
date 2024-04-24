@@ -29,14 +29,15 @@ const tasks = [
  
   // Hay que hacer que esta función modifique el array y su propiedad completed. 
   function handleClick(event){
-    const clicked = event.target;
-    const selectTask = tasks.completed.map((tarea) => tarea===clicked);
+    let clicked = event.target;
+    console.log(clicked);
+    let selectTask = tasks.find((tarea) => tarea ===clicked);
     console.log(selectTask);
    if (selectTask === clicked){
-    selectTask.completed = false;
+    selectTask.completed === false;
      
    }else{
-    selectTask.completed = true;
+    selectTask.completed === true;
    } //pedir soporte para ver como solucionar el tachado (map)
    ;
     /* const tachado = tasks.map((listado) => listado.renderTask(clicked)); 
