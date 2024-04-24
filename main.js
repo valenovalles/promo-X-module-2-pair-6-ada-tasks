@@ -1,16 +1,16 @@
 'use strict';
 const tasks = [
-    { name: 'Recoger setas en el campo', completed:true},
-    { name: 'Comprar pilas', completed: true},
-    { name: 'Poner una lavadora de blancos', completed: true},
-    { name: 'Aprender cómo se realizan las peticiones al servidor en JavaScript', completed: false, 
+    { name: 'Recoger setas en el campo', completed:true, id: '1',},
+    { name: 'Comprar pilas', completed: true, id: '2',},
+    { name: 'Poner una lavadora de blancos', completed: true, id: '3',},
+    { name: 'Aprender cómo se realizan las peticiones al servidor en JavaScript', completed: false, id: '4',
     },
   ];
 
   let list = document.querySelector('.js_list_task');
 
   function renderTask (){ //pintar en html
-  
+  list.innerHTML= " ";
     for (const item of tasks){
       
       if (item.completed === true){
@@ -24,22 +24,26 @@ const tasks = [
 };
 
   
-  renderTask();
+  renderTask(tasks);
 
  
   // Hay que hacer que esta función modifique el array y su propiedad completed. 
   function handleClick(event){
     let clicked = event.target;
-    console.log(clicked);
-    let selectTask = tasks.find((tarea) => tarea ===clicked);
-    console.log(selectTask);
-   if (selectTask === clicked){
-    selectTask.completed === false;
+    let selectTask = tasks.find((tarea) => tarea.name === clicked.textContent.trim());
+    // console.log(selectTask);
+   if ( selectTask && selectTask.completed === true){
+    console.log(selectTask.completed);
+    selectTask.completed = false;
      
    }else{
-    selectTask.completed === true;
-   } //pedir soporte para ver como solucionar el tachado (map)
+    console.log('es false');
+    selectTask.completed = true;
+   }
+  
+  //pedir soporte para ver como solucionar el tachado (map)
    ;
+   renderTask(selectTask);
     /* const tachado = tasks.map((listado) => listado.renderTask(clicked)); 
     console.log(tachado); */
 
