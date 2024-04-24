@@ -9,22 +9,22 @@ const tasks = [
     },
   ];
 
-  const list = document.querySelector('.js_list_task');
+  let list = document.querySelector('.js_list_task');
 
-  function renderTask (){
-    for (const eachTask of tasks){
-      if (eachTask.completed === true){
+  function renderTask (listado){
+    for (const listado of tasks){
+      if (listado.completed === true){
         list.innerHTML += `<li class= "task tachado"> <input type="checkbox" checked>
-    ${eachTask.name}</li>`;
+    ${listado.name}</li>`;
     } else {
         list.innerHTML += `<li class= "task"> <input type="checkbox">
-    ${eachTask.name}</li>`;
+    ${listado.name}</li>`;
       }    
   }
 };
 
   
-  const tareas = renderTask();
+  renderTask(tasks);
 
   const cadaTarea = document.querySelector('.task')
   console.log(cadaTarea);
@@ -33,14 +33,15 @@ const tasks = [
 
   // Hay que hacer que esta función modifique el array y su propiedad completed. 
   function handleClick(event){
+    let clicked = event.target;
+    list = " ";
+    console.log(list);
+    const tachado = tasks.map((listado) => listado.renderTask(clicked)); 
+    console.log(tachado);
 
-    console.log(event.target);
-    const clicked = event.target;
-    console.log(clicked);
-
-    if (list === clicked){
-      list.classList.remove('tachado');
-    }
+    // if (list === clicked){
+    //   list.classList.remove('tachado');
+    // }
   };
   
   list.addEventListener('click', handleClick);
