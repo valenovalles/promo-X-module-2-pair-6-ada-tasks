@@ -49,8 +49,20 @@ const tasks = [
     if (task) {
       task.completed = !task.completed;
       console.log(tasks);
-      renderTask(tasks);
-    };
-  };
+      renderName(tasks);
+    }
+  }
   
- 
+  // Hay que hacer que esta función modifique el array y su propiedad completed. 
+  
+   
+   
+//pedir soporte para ver como solucionar el tachado (map)
+   ;
+    /* const tachado = tasks.map((listado) => listado.renderTask(clicked)); 
+    console.log(tachado); */
+
+    // if (list === clicked){
+    //   list.classList.remove('tachado');
+    // }
+
